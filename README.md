@@ -30,7 +30,7 @@
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
       width: 80%;
       max-width: 600px;
-      margin: 20px auto;
+      margin: 20px ;
     }
 
     h2 {
