@@ -1,7 +1,6 @@
 
 
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -120,7 +119,7 @@
   
 
   <div class="container">
-    <img src="C:\Users\Administrator\Downloads\Nec.png.jpg" alt="NEC College Logo" id="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Nec.png.jpg/220px-Nec.png.jpg" alt="NEC College Logo" id="logo">
     <h2>NEC College - IT Results(2-1) Semister</h2>
     <form id="resultForm">
       <label for="rollNumber">Enter HT Number :</label>
