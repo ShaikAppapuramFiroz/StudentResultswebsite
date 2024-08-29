@@ -189,8 +189,8 @@
     <!-- Contact details -->
     <p style="color:green"> For More queries </p>
     <div id="contactDetails">
-      <p>Email: <a href="mailto:yalamandap6@gmail.com">nrtec@gmail.com</a></p>
-      <p>Phone: 6301932724</p>
+      <p>Email: <a href="mailto:appapuramfiroz@gmail.com.com">nrtec@gmail.com</a></p>
+      <p>Phone: 7416546101</p>
     </div>
   </div>
 </html>
