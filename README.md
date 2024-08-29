@@ -1,6 +1,4 @@
-
-
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -11,14 +9,47 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background-color:skyblue;
+      background: linear-gradient(135deg, #6e45e2, #88d3ce);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
-    #header {
-      background-color:darkviolet;
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #6e45e2;
       color: #fff;
-      text-align: center;
-      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      z-index: 1000;
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+
+    #splash-screen img {
+      max-width: 150px;
+      margin-bottom: 20px;
+      border: 1px;
+      box-shadow: 8px 8px 15px black;
+    }
+
+    #splash-screen.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .spt {
+      color: white;
+      text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
     }
 
     .container {
@@ -26,14 +57,31 @@
       background-color: #fff;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      width: 80%;
-      max-width: 600px;
-      margin: 20px auto;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 650px;
+      margin: 10px auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .container.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #header {
+      background-color: #4b0082;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      border-radius: 10px 10px 0 0;
     }
 
     h2 {
-      color: #007BFF;
+      color: #4b0082;
+      margin-bottom: 20px;
     }
 
     form {
@@ -42,87 +90,149 @@
 
     label {
       margin-right: 10px;
+      font-weight: bold;
+      color: #333;
     }
 
     input {
       padding: 10px;
-      border: 1px solid #ddd;
+      border: 2px solid #ddd;
       border-radius: 5px;
       margin-bottom: 10px;
-      width: 60%;
+      width: calc(100% - 24px); /* Adjust input width for padding */
+      max-width: 400px; /* Ensure a maximum width for large screens */
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: #4b0082;
     }
 
     button {
-      padding: 10px 15px;
-      background-color: #007BFF;
+      padding: 5px 10px; /* Smaller padding for a smaller button */
+      font-size: 14px; /* Smaller font size */
+      background-color: #4b0082;
       color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
     }
 
     button:hover {
-      background-color: #0056b3;
+      background-color: #370067;
+      transform: scale(1.05);
     }
 
     #result {
       margin-top: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    #result.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
-      border: 2px solid #007BFF;
-      background-color: #87CEEB;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      overflow: hidden;
     }
 
     th, td {
-      border: 2px solid #007BFF;
-      padding: 8px;
+      border: 1px solid #ddd;
+      padding: 12px;
       text-align: left;
-      font-size: 14px;
-      background-color: #87CEEB;
+      font-size: 16px;
+      color: #333;
     }
 
     th {
-      background-color: #007BFF;
+      background-color: #4b0082;
       color: #fff;
     }
 
     tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
-    tr:nth-child(odd) {
-      background-color: #e6e6e6;
+      background-color: #fafafa;
     }
 
     tr:hover {
-      background-color: #d4d4d4;
+      background-color: #ddd;
     }
 
     #logo {
-      max-width: 100%;
+      max-width: 100px;
       height: auto;
       margin-bottom: 20px;
+    }
+
+    #contactDetails {
+      margin-top: 20px;
+      text-align: left;
+      color: #4b0082;
+    }
+
+    #contactDetails a {
+      color: #4b0082;
+      text-decoration: none;
+    }
+
+    #contactDetails a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+
+      #splash-screen img {
+        max-width: 120px;
+      }
+
+      .container {
+        padding: 15px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      button {
+        width: 50%;
+      }
+
+      table th, table td {
+        font-size: 14px;
+        padding: 10px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div id="header">
-    <h1>NARASARAOPETA ENGINEERING COLLEGE (Autonomous)</h1>
-    <p style="color:white;">Kotappakonda Rd, Narasaraopeta, Andhra Pradesh 522601
-</p>
+  <div id="splash-screen">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Nec.png.jpg/220px-Nec.png.jpg" alt="NEC College Logo">
+    <div class="spt">Welcome to NEC College Results</div>
   </div>
-  
 
-  <div class="container">
+  <div class="container show">
+    <div id="header">
+      <h1>NARASARAOPETA ENGINEERING COLLEGE (Autonomous)</h1>
+      <p style="color:white;">Kotappakonda Rd, Narasaraopeta, Andhra Pradesh 522601</p>
+    </div>
+    
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Nec.png.jpg/220px-Nec.png.jpg" alt="NEC College Logo" id="logo">
-    <h2>NEC College - IT Results(2-1) Semister</h2>
+    <h2>NEC College - IT Results (2-1) Semester</h2>
     <form id="resultForm">
-      <label for="rollNumber">Enter HT Number :</label>
+      <label for="rollNumber">Enter HT Number:</label>
       <input type="text" id="rollNumber" name="rollNumber" required>
       <button type="button" onclick="generateResults()">Get Results</button>
     </form>
@@ -130,6 +240,12 @@
   </div>
 
   <script>
+    window.onload = function() {
+      setTimeout(function() {
+        document.getElementById('splash-screen').classList.add('hide');
+      }, 1500);
+    };
+
     function generateResults() {
       var rollNumberInput = document.getElementById("rollNumber");
       var rollNumber = rollNumberInput.value.toUpperCase();
@@ -153,9 +269,7 @@
 
         var credits = i === 0 ? 0 : subjectResult > 5 ? (i < 5 ? 3 : 1.5) : 0;
 
-        var bgColor = i % 2 === 0 ? '#e6e6e6' : '#f9f9f9';
-
-        tableHTML += "<tr style='background-color:" + bgColor + "'>";
+        tableHTML += "<tr>";
         tableHTML += "<td>" + subjects[i] + "</td>";
         tableHTML += "<td>" + grade + "</td>";
         tableHTML += "<td>" + subjectResult + " points</td>";
@@ -165,6 +279,17 @@
 
       tableHTML += "</table>";
       resultContainer.innerHTML += tableHTML;
+      resultContainer.classList.add('show');
+
+      // Move contact details below the result
+      var contactContainer = document.createElement('div');
+      contactContainer.id = 'contactDetails';
+      contactContainer.innerHTML = `
+        <h3>Contact Us</h3>
+        <p>Email: <a href="mailto:appapuramfiroz@gmail.com">nrtec@gmail.com</a></p>
+        <p>Phone: 7416546101</p>
+      `;
+      resultContainer.appendChild(contactContainer);
     }
 
     function isValidRollNumber(rollNumber) {
@@ -183,14 +308,4 @@
     }
   </script>
 </body>
-  <div class="container">
-    <h1> Contact US </h1> <!-- Existing content -->
-
-    <!-- Contact details -->
-    <p style="color:green"> For More queries </p>
-    <div id="contactDetails">
-      <p>Email: <a href="mailto:appapuramfiroz@gmail.com.com">nrtec@gmail.com</a></p>
-      <p>Phone: 7416546101</p>
-    </div>
-  </div>
 </html>
