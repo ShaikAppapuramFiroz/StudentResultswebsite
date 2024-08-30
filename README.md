@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,7 +11,6 @@
       padding: 0;
       background: linear-gradient(135deg, #6e45e2, #88d3ce);
       height: 100vh;
-      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -58,7 +58,7 @@
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-      width: 100%;
+      width: 90%;
       max-width: 650px;
       margin: 10px auto;
       opacity: 0;
@@ -230,7 +230,7 @@
     </div>
     
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Nec.png.jpg/220px-Nec.png.jpg" alt="NEC College Logo" id="logo">
-    <h2>NEC College - IT Results (2-1) Semester</h2>
+    <h2>NEC College - IT (III-I) Semester Results</h2>
     <form id="resultForm">
       <label for="rollNumber">Enter HT Number:</label>
       <input type="text" id="rollNumber" name="rollNumber" required>
@@ -255,7 +255,7 @@
         return;
       }
 
-      var subjects = ["COI", "JAVA", "DATA STRUCTURES", "FEWT", "CO", "MFCS", "DS-LAB", "DATA STRUCTURE-LAB", "JAVALAB", "FEWT-LAB"];
+      var subjects = ["EITK", "OS", "DWDM", "ACD", "AWT", "DM", "AWT-LAB", "OS & CN-LAB", "ENGLISH EMPLOYABILITY SKILLS", "CSP-LAB"];
       var resultContainer = document.getElementById("result");
 
       resultContainer.innerHTML = "";
@@ -281,6 +281,20 @@
       resultContainer.innerHTML += tableHTML;
       resultContainer.classList.add('show');
 
+      // Add GPA calculation button
+      var gpaText = document.createElement('p');
+      gpaText.textContent = "Wanna know the result's GPA? Click here:";
+
+      var gpaButton = document.createElement('button');
+      gpaButton.textContent = "Calculate GPA";
+      gpaButton.onclick = function() {
+        
+         window.location.href = "https://badripraveen.blogspot.com/p/hi.html";
+        };
+
+      resultContainer.appendChild(gpaText);
+      resultContainer.appendChild(gpaButton);
+
       // Move contact details below the result
       var contactContainer = document.createElement('div');
       contactContainer.id = 'contactDetails';
@@ -305,6 +319,25 @@
       else if (points === 6) return 'D';
       else if (points === 5) return 'D';
       else return 'F';
+    }
+
+    function calculateGPA() {
+      var table = document.querySelector("#result table");
+      var rows = table.querySelectorAll("tr");
+      var totalPoints = 0;
+      var totalCredits = 0;
+
+      for (var i = 1; i < rows.length; i++) {
+        var cells = rows[i].querySelectorAll("td");
+        var points = parseFloat(cells[2].textContent);
+        var credits = parseFloat(cells[3].textContent);
+
+        totalPoints += points * credits;
+        totalCredits += credits;
+      }
+
+      var gpa = totalPoints / totalCredits;
+      alert("Your GPA is: " + gpa.toFixed(2));
     }
   </script>
 </body>
