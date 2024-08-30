@@ -283,7 +283,7 @@
 
       // Add GPA calculation button
       var gpaText = document.createElement('p');
-      gpaText.textContent = "Wanna know the result's GPA? Click here:";
+      gpaText.textContent = "Wanna know the result's GPA? Click";
 
       var gpaButton = document.createElement('button');
       gpaButton.textContent = "Calculate GPA";
